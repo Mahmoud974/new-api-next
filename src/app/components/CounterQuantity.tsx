@@ -1,15 +1,18 @@
 import { useState } from "react";
 
-const CounterQuantity = ({ quantityUser }: any) => {
+type Props = {
+  quantityUser: number;
+};
+const CounterQuantity = ({ quantityUser }: Props) => {
   const customButton: string =
     "text-2xl bg-gray-200 text-gray-400 font-bold w-12 mx-auto py-2 ";
   const [quantity, setQuantity] = useState<number>(quantityUser);
 
-  const addQuantity = () => {
+  const addQuantity = (): void => {
     setQuantity(quantity + 1);
   };
 
-  const lessQuantity = () => {
+  const lessQuantity = (): void => {
     if (quantity > 0) {
       setQuantity(quantity - 1);
     }

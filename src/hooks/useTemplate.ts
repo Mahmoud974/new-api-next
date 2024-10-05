@@ -6,7 +6,7 @@ const fetchElements = async (url: string) => {
   return response.data;
 };
 
-const postElement = async (data: any) => {
+const postElement = async (data) => {
   const response = await axios.post("http://localhost:3000/api/post", data);
   console.log(response);
 

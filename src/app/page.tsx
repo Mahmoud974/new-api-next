@@ -74,6 +74,8 @@ export default function Page() {
   } = useForm<{ comment: string }>();
 
   const onSubmit: SubmitHandler<{ comment: string }> = (formData) => {
+    console.log(replyingTo);
+
     const newReply = {
       id: Math.random() * 1000,
       parentId: parentId,
@@ -117,7 +119,7 @@ export default function Page() {
               initial={{ opacity: 0, scale: 0.5 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className={`flex md:flex-row flex-col  items-start bg-white text-black rounded-xl shadow-lg p-4 ${
+              className={`flex md:flex-row mt-5 items-start bg-white text-black rounded-xl shadow-lg p-4 ${
                 respondIndex === index ? "border-l-4 border-purple-700" : ""
               }`}
               aria-expanded={respondIndex === index}
