@@ -30,12 +30,41 @@ export const POST = async (req: Request) => {
 
     parentComment.reply.push(newComment);
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       { message: "Reply added successfully!" },
       { status: 201 }
     );
+
+    // Ajout des en-têtes CORS
+    response.headers.set(
+      "Access-Control-Allow-Origin",
+      "https://interactive-comments-section-pink-rho.vercel.app"
+    );
+    response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+    response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+
+    return response;
   } catch (err) {
     console.error(err);
-    return NextResponse.json({ error: "An error occurred" }, { status: 500 });
+    const errorResponse = NextResponse.json(
+      { error: "An error occurred" },
+      { status: 500 }
+    );
+    errorResponse.headers.set(
+      "Access-Control-Allow-Origin",
+      "https://interactive-comments-section-pink-rho.vercel.app"
+    );
+    return errorResponse;
   }
+};
+
+export const OPTIONS = async () => {
+  const response = new Response(null, { status: 204 });
+  response.headers.set(
+    "Access-Control-Allow-Origin",
+    "https://interactive-comments-section-pink-rho.vercel.app"
+  );
+  response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.headers.set("Access-Control-Allow-Headers", "Content-Type");
+  return response;
 };
