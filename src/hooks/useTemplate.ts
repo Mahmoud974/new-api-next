@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api"
-    : "https://product-cart-plum.vercel.app/api"; // Remplace par l'URL de production
+    : "https://interactive-comments-section-nik1w7eze-mahmoud974s-projects.vercel.app/api/conv";
 
 const fetchElements = async (url: string) => {
   const response = await axios.get(url);
