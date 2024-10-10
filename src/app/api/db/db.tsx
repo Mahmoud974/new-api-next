@@ -14,7 +14,7 @@ interface Comments {
   date: string;
   comment: string;
   quantity: number;
-  reply: Reply[]; // Tableau de réponses de type Reply
+  reply: Reply[];
 }
 
 export const comments: Comments[] = [
