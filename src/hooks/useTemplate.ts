@@ -13,9 +13,14 @@ const fetchElements = async (url: string) => {
 };
 
 const postElement = async (data) => {
-  const response = await axios.post(`${API_URL}/post`, data);
-  console.log(response);
-  return response.data;
+  try {
+    const response = await axios.post(`${API_URL}/post`, data);
+    console.log(response);
+    return response.data;
+  } catch (error) {
+    console.error("Error posting data:", error);
+    throw error;
+  }
 };
 
 export const useTemplate = () => {
