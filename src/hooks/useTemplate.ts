@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api"
-    : "https://interactive-comments-section-nik1w7eze-mahmoud974s-projects.vercel.app/api";
+    : "https://bespoke-bublanina-9e1d94.netlify.app/api";
 
 const fetchElements = async (url: string) => {
   const response = await axios.get(url);
