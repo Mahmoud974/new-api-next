@@ -1,10 +1,11 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 
+// Définition des URLs selon l'environnement
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api"
-    : "https://interactive-comments-section-pink-rho.vercel.app/api";
+    : "https://product-cart-plum.vercel.app/api"; // Remplace par l'URL de production
 
 const fetchElements = async (url: string) => {
   const response = await axios.get(url);
@@ -25,16 +26,12 @@ export const useTemplate = () => {
 };
 
 export const usePostTemplate = () => {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient(); // Pour invalider ou rafraîchir les données après le POST
 
   return useMutation({
     mutationFn: postElement,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["get-template"] });
-    },
-
-    onError: (error) => {
-      console.error("Error posting data:", error);
     },
   });
 };
