@@ -4,8 +4,8 @@ import { comments } from "../db/db";
 export const GET = async () => {
   try {
     const response = NextResponse.json(comments, { status: 200 });
-    // Ajout des en-têtes CORS
-    response.headers.set("Access-Control-Allow-Origin", "*"); // Remplacez '*' par votre domaine pour plus de sécurité
+
+    response.headers.set("Access-Control-Allow-Origin", "*");
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     return response;
   } catch (err) {

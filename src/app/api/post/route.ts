@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 import { comments } from "../db/db";
 
+const allowedOrigin =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:3000"
+    : "https://interactive-comments-section-pink-rho.vercel.app";
+
 export const POST = async (req: Request) => {
   try {
     const newComment = await req.json();
@@ -35,11 +40,7 @@ export const POST = async (req: Request) => {
       { status: 201 }
     );
 
-    // Ajout des en-têtes CORS
-    response.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://interactive-comments-section-pink-rho.vercel.app"
-    );
+    response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
 
@@ -50,20 +51,14 @@ export const POST = async (req: Request) => {
       { error: "An error occurred" },
       { status: 500 }
     );
-    errorResponse.headers.set(
-      "Access-Control-Allow-Origin",
-      "https://interactive-comments-section-pink-rho.vercel.app"
-    );
+    errorResponse.headers.set("Access-Control-Allow-Origin", allowedOrigin);
     return errorResponse;
   }
 };
 
 export const OPTIONS = async () => {
   const response = new Response(null, { status: 204 });
-  response.headers.set(
-    "Access-Control-Allow-Origin",
-    "https://interactive-comments-section-pink-rho.vercel.app"
-  );
+  response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
   response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
   response.headers.set("Access-Control-Allow-Headers", "Content-Type");
   return response;
