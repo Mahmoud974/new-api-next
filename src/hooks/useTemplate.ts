@@ -5,7 +5,7 @@ import axios from "axios";
 const API_URL =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000/api"
-    : "https://interactive-comments-section-nik1w7eze-mahmoud974s-projects.vercel.app/api/conv";
+    : "https://interactive-comments-section-nik1w7eze-mahmoud974s-projects.vercel.app/api";
 
 const fetchElements = async (url: string) => {
   const response = await axios.get(url);
@@ -26,7 +26,7 @@ export const useTemplate = () => {
 };
 
 export const usePostTemplate = () => {
-  const queryClient = useQueryClient(); // Pour invalider ou rafraîchir les données après le POST
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: postElement,
