@@ -64,7 +64,7 @@ export default function Page() {
   const [respondIndex, setRespondIndex] = useState<number | null>(null);
   const [parentId, setParentId] = useState<number | null>(null);
   const [replyingTo, setReplyingTo] = useState<string>("");
-
+  console.log(getComments);
   const {
     register,
     handleSubmit,
