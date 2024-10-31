@@ -4,7 +4,7 @@ import { comments } from "../db/db";
 const allowedOrigin =
   process.env.NODE_ENV === "development"
     ? "http://localhost:3000"
-    : "https://section-interactive-comments.netlify.app/";
+    : "https://section-interactive-comments.netlify.app";
 
 export const POST = async (req: Request) => {
   try {
@@ -40,7 +40,7 @@ export const POST = async (req: Request) => {
       { status: 201 }
     );
 
-    response.headers.set("Access-Control-Allow-Origin", allowedOrigin);
+    response.headers.set("Access-Control-Allow-Origin", "*");
     response.headers.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     response.headers.set("Access-Control-Allow-Headers", "Content-Type");
 
