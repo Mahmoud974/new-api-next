@@ -9,6 +9,7 @@ const API_URL =
 
 const fetchElements = async (url: string) => {
   const response = await axios.get(url);
+  console.log("Fetched comments:", response.data); // Ajoutez ce log
   return response.data;
 };
 
@@ -26,6 +27,7 @@ const postElement = async (data) => {
 export const useTemplate = () => {
   return useQuery({
     queryKey: ["get-template"],
+
     queryFn: () => fetchElements(`${API_URL}/conv`),
   });
 };

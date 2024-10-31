@@ -60,11 +60,13 @@ const CommentContent = ({ comment }: { comment: string }) => {
 
 export default function Page() {
   const { data: getComments } = useTemplate();
+
   const { mutate: postComment } = usePostTemplate();
+
   const [respondIndex, setRespondIndex] = useState<number | null>(null);
   const [parentId, setParentId] = useState<number | null>(null);
   const [replyingTo, setReplyingTo] = useState<string>("");
-  console.log(getComments);
+
   const {
     register,
     handleSubmit,
